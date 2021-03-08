@@ -34,9 +34,9 @@
 #include <GL/glx.h>
 #include <QX11Info>
 #include <gst/gl/x11/gstgldisplay_x11.h>
-#endif
 
-#if GST_GL_HAVE_PLATFORM_EGL
+
+#elif GST_GL_HAVE_PLATFORM_EGL
 #include <wayland-egl.h>
 #include <EGL/egl.h>
 #include <EGL/eglext.h>
@@ -53,7 +53,7 @@ extern void *qt_current_nsopengl_context ();
 #endif
 
 #define CASE_STR( value ) case value: return #value; 
-#if GST_GL_HAVE_PLATFORM_EGL      
+#if 0 //GST_GL_HAVE_PLATFORM_EGL      
 const char* eglGetErrorString( EGLint error )
 {
     switch( error )
@@ -121,7 +121,7 @@ const char* glGetErrorString( GLenum err )
     CASE_STR( GL_INVALID_OPERATION             )
     CASE_STR( GL_INVALID_FRAMEBUFFER_OPERATION )
     CASE_STR( GL_OUT_OF_MEMORY                 )
-#if GST_GL_HAVE_PLATFORM_EGL
+#if 0
     CASE_STR( GL_STACK_UNDERFLOW_KHR           )
     CASE_STR( GL_STACK_OVERFLOW_KHR            )
 #else
@@ -160,7 +160,7 @@ QGLRenderer::initializeGL ()
   display =
       (GstGLDisplay *) gst_gl_display_x11_new_with_display (QX11Info::
       display ());
-#if GST_GL_HAVE_PLATFORM_EGL
+#if 0 //GST_GL_HAVE_PLATFORM_EGL
   const char* extensions = eglQueryString(nullptr, EGL_EXTENSIONS);
   qDebug("%s", extensions);
 #endif

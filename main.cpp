@@ -27,8 +27,7 @@
 int
 main(int argc, char *argv[]) {
 
-  /* FIXME: port the example to shaders and remove this */
-#if GST_GL_HAVE_PLATFORM_EGL
+#if 0 //GST_GL_HAVE_PLATFORM_EGL
   g_setenv ("GST_GL_API", "gles2", FALSE);
   g_setenv ("GST_GL_WINDOW", "wayland", FALSE);
   g_setenv ("GST_GL_PLATFORM", "egl", FALSE);
