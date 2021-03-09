@@ -337,21 +337,40 @@ QGLRenderer::initializeGL ()
 
 void QGLRenderer::initShaders() {
 
+    bool no_errors = true;
+
     // Compile vertex shader
-    if (!program.addShaderFromSourceFile(QOpenGLShader::Vertex, ":/vshader.glsl"))
+    if (!program.addShaderFromSourceFile(QOpenGLShader::Vertex,
+                                         ":/vshader.glsl")) {
+        qDebug("ERROR: compile vertex shader failed!");
+        no_errors = false;
         emit closeRequested();
+    }
 
     // Compile fragment shader
-    if (!program.addShaderFromSourceFile(QOpenGLShader::Fragment, ":/fshader.glsl"))
+    if (!program.addShaderFromSourceFile(QOpenGLShader::Fragment, 
+                                         ":/fshader.glsl")) {
+        qDebug("ERROR: compile fragment shader failed!");
+        no_errors = false;
         emit closeRequested();
+    }
 
     // Link shader pipeline
-    if (!program.link())
+    if (!program.link()) {
+        qDebug("ERROR: link shader pipeline failed!");
+        no_errors = false;
         emit closeRequested();
+    }
 
     // Bind shader pipeline for use
-    if (!program.bind())
+    if (!program.bind()) {
+        qDebug("ERROR: bind shader pipeline failed!");
+        no_errors = false;
         emit closeRequested();
+    }
+
+    if (no_errors)
+        qDebug("SUCCESS: no errors occured while initializing shader program.");
 }
 
 void
