@@ -32,7 +32,7 @@ LIBS += -L"C:/gstreamer/lib" \
     -lglu32
 }
 unix:!mac {
-    #PKGCONFIG += wayland-client
+    PKGCONFIG += wayland-client
     DEFINES += UNIX
     #INCLUDEPATH += \
     #    /opt/fsl-imx-xwayland/5.4-zeus/sysroots/aarch64-poky-linux/usr/include/QtGui/5.15.0/QtGui \
@@ -42,7 +42,7 @@ unix:!mac {
         -lgstgl-1.0 #\
         #-lGLU \
         #-lGL
-    QT += x11extras gui 
+    #QT += x11extras gui 
 }
 mac {
     DEFINES += MACOSX

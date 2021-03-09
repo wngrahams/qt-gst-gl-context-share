@@ -53,7 +53,7 @@ extern void *qt_current_nsopengl_context ();
 #endif
 
 #define CASE_STR( value ) case value: return #value; 
-#if 0 //GST_GL_HAVE_PLATFORM_EGL      
+#if GST_GL_HAVE_PLATFORM_EGL      
 const char* eglGetErrorString( EGLint error )
 {
     switch( error )
@@ -121,7 +121,7 @@ const char* glGetErrorString( GLenum err )
     CASE_STR( GL_INVALID_OPERATION             )
     CASE_STR( GL_INVALID_FRAMEBUFFER_OPERATION )
     CASE_STR( GL_OUT_OF_MEMORY                 )
-#if 0
+#if 1
     CASE_STR( GL_STACK_UNDERFLOW_KHR           )
     CASE_STR( GL_STACK_OVERFLOW_KHR            )
 #else
